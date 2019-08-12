@@ -2,12 +2,12 @@
 
 <launch>
   <node pkg="ntrip_ros" type="ntripclient.py" name="ntrip_ros" output="screen">
- 	 <param name="rtcm_topic" value="/rtcm"/>
- 	 <param name="ntrip_server" value="URL:PORT"/>
- 	 <param name="ntrip_user" value="USER"/>
- 	 <param name="ntrip_pass" value="PASS"/>
- 	 <param name="ntrip_stream" value="MOUNTPOINT"/>
- 	 <param name="nmea_gga" value="$GPGGA,..."/>
+ 	 <param name="rtcm_topic" value="/ntrip/rtcm"/>
+ 	 <param name="ntrip_server" value="170.84.40.52:2101"/>
+ 	 <param name="ntrip_user" value="renangm"/>
+ 	 <param name="ntrip_pass" value="INVzNk"/>
+ 	 <param name="ntrip_stream" value="POAL0"/>
+ 	 <param name="nmea_gga" value="$GPGGA,183712.257,3004.443,S,05107.185,W,1,12,1.0,0.0,M,0.0,M,,*64"/>
   </node>
 </launch>
 
