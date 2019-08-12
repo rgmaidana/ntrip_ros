@@ -19,7 +19,7 @@ def patch_http_response_read(func):
     def inner(*args):
         try:
             return func(*args)
-        except httplib.IncompleteRead, e:
+        except httplib.IncompleteRead as e:
             return e.partial
     return inner
 httplib.HTTPResponse.read = patch_http_response_read(httplib.HTTPResponse.read)
@@ -41,7 +41,7 @@ class ntripconnect(Thread):
         connection = HTTPConnection(self.ntc.ntrip_server)
         connection.request('GET', '/'+self.ntc.ntrip_stream, self.ntc.nmea_gga, headers)
         response = connection.getresponse()
-        if response.status != 200: raise Exception("blah")
+        if response.status != 200: raise Exception("Error: Response not HTTP200 (OK)")
         buf = ""
         rmsg = Message()
         restart_count = 0
@@ -88,7 +88,7 @@ class ntripconnect(Thread):
                 connection = HTTPConnection(self.ntc.ntrip_server)
                 connection.request('GET', '/'+self.ntc.ntrip_stream, self.ntc.nmea_gga, headers)
                 response = connection.getresponse()
-                if response.status != 200: raise Exception("blah")
+                if response.status != 200: raise Exception("Error: Response not HTTP200 (OK)")
                 buf = ""
 
         connection.close()
